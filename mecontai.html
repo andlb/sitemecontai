@@ -1,0 +1,999 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeContai - Transforme seu pós-venda em crescimento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'azul-mecontai': '#0066FF',
+                        'azul-escuro': '#0A2463',
+                        'amarelo': '#FFD23F',
+                        'mostarda': '#F9F3E5',
+                        'cinza-claro': '#F5F7FA',
+                        'cx-color': '#FF6B6B',
+                        'gol-color': '#4ECDC4',
+                        'comunica-color': '#FFD166',
+                        'footer-color': '#005c6f',
+                        'cta-color': '#173a52'
+                    },
+                    fontFamily: {
+                        'montserrat': ['Montserrat', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Button Styles */
+        .btn-primary {
+            background-color: #0066FF;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0052cc;
+            transform: translateY(-2px);
+        }
+        
+        /* Header Animation */
+        .header-anim {
+            animation: fadeInDown 0.8s ease-out;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Feature Card Styles */
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Service Card Styles */
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Benefit Card Styles */
+        .benefit-card {
+            transition: all 0.3s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .benefit-icon svg {
+            width: 30px;
+            height: 30px;
+        }
+        
+        /* Testimonial Styles */
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        .quote-icon {
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.1;
+            font-family: Georgia, serif;
+        }
+        
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            margin: 0 auto;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            min-width: 100%;
+            padding: 0 15px;
+        }
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        .carousel-control-prev {
+            left: 10px;
+        }
+        .carousel-control-next {
+            right: 10px;
+        }
+        
+        /* Client Logo Styles */
+        .client-logo-slide {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            background-color: white;
+            border-radius: 8px;
+            margin: 0 10px;
+        }
+        .client-logo-slide img {
+            max-height: 70px;
+            max-width: 100%;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+        .client-logo-slide img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Client Logo Carousel */
+        .client-logo-section {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #0066FF;
+            background-color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        /* Footer Styles */
+        .footer-logo-container {
+            max-width: 180px;
+        }
+        .logo-img {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .benefit-icon {
+                width: 50px;
+                height: 50px;
+            }
+            .benefit-icon svg {
+                width: 25px;
+                height: 25px;
+            }
+            .client-logo-slide {
+                height: 80px;
+            }
+            .client-logo-slide img {
+                max-height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center">
+                        <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Home%20(2000%20x%20500%20px).png" alt="MeContai Logo" class="h-10">
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#servicos" class="font-inter text-gray-700 hover:text-azul-mecontai transition-colors duration-300">Soluções</a>
+                    <a href="#beneficios" class="font-inter text-gray-700 hover:text-azul-mecontai transition-colors duration-300">Benefícios</a>
+                    <a href="#depoimentos" class="font-inter text-gray-700 hover:text-azul-mecontai transition-colors duration-300">Depoimentos</a>
+                    <a href="https://wa.me/message/DKVG55LPQ7N5N1" target="_blank" class="btn-primary text-white font-medium py-2 px-4 rounded-lg">
+                        Fale com a gente
+                    </a>
+                </div>
+                
+                <!-- Mobile Navigation Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-azul-mecontai focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="#servicos" class="block py-2 px-4 text-gray-700 hover:text-azul-mecontai">Soluções</a>
+                <a href="#beneficios" class="block py-2 px-4 text-gray-700 hover:text-azul-mecontai">Benefícios</a>
+                <a href="#depoimentos" class="block py-2 px-4 text-gray-700 hover:text-azul-mecontai">Depoimentos</a>
+                <a href="https://wa.me/message/DKVG55LPQ7N5N1" target="_blank" class="block py-2 px-4 text-azul-mecontai font-medium">Fale com a gente</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-white to-mostarda">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 header-anim">
+                    <h1 class="font-montserrat font-bold text-4xl md:text-5xl lg:text-6xl text-azul-escuro leading-tight mb-6">
+                        Transforme seu pós-venda em crescimento
+                    </h1>
+                    <p class="font-inter text-xl text-gray-700 mb-8 max-w-lg">
+                        Aumente suas vendas, reduza custos e encante seus clientes com uma plataforma completa de gestão de relacionamento.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="https://wa.me/message/DKVG55LPQ7N5N1" target="_blank" class="btn-primary text-white font-medium py-3 px-8 rounded-lg inline-block text-center font-inter">
+                            Quero conhecer
+                        </a>
+                        <a href="#servicos" class="bg-white text-azul-mecontai border border-azul-mecontai font-medium py-3 px-8 rounded-lg inline-block text-center font-inter hover:bg-azul-mecontai hover:text-white transition-colors duration-300">
+                            Ver soluções
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://github.com/andlb/sitemecontai/blob/main/clientes_felizes_fidelizados.png" alt="MeContai Dashboard" class="max-w-full h-auto rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block text-azul-mecontai font-medium mb-2">RECURSOS</span>
+                <h2 class="font-montserrat font-bold text-3xl md:text-4xl text-azul-escuro mb-4">Tudo o que você precisa para um pós-venda eficiente</h2>
+                <p class="font-inter text-lg text-gray-700 max-w-3xl mx-auto">Gerencie todo o ciclo de relacionamento com o cliente em uma única plataforma intuitiva e completa.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-cinza-claro p-8 rounded-xl">
+                    <div class="mb-4">
+                        <svg class="w-12 h-12 text-azul-mecontai" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-montserrat font-bold text-xl text-azul-escuro mb-3">Pesquisas de Satisfação</h3>
+                    <p class="font-inter text-gray-600">Crie pesquisas personalizadas para cada momento do cliente e colete feedbacks valiosos de forma automática.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-cinza-claro p-8 rounded-xl">
+                    <div class="mb-4">
+                        <svg class="w-12 h-12 text-azul-mecontai" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-montserrat font-bold text-xl text-azul-escuro mb-3">Análise de Dados</h3>
+                    <p class="font-inter text-gray-600">Visualize métricas e tendências em tempo real para tomar decisões baseadas em dados concretos.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-cinza-claro p-8 rounded-xl">
+                    <div class="mb-4">
+                        <svg class="w-12 h-12 text-azul-mecontai" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-montserrat font-bold text-xl text-azul-escuro mb-3">Alertas Inteligentes</h3>
+                    <p class="font-inter text-gray-600">Receba notificações automáticas sobre problemas recorrentes ou clientes insatisfeitos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="py-20 bg-cinza-claro">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block text-azul-mecontai font-medium mb-2">SOLUÇÕES</span>
+                <h2 class="font-montserrat font-bold text-3xl md:text-4xl text-azul-escuro mb-4">Soluções completas para cada necessidade</h2>
+                <p class="font-inter text-lg text-gray-700 max-w-3xl mx-auto">Escolha o módulo ideal para sua empresa ou combine-os para uma experiência completa.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="bg-cx-color bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-cx-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-montserrat font-bold text-xl text-azul-escuro mb-3">CX Insights</h3>
+                    <p class="font-inter text-gray-600 mb-6">Entenda a jornada do cliente com pesquisas automáticas e análises detalhadas em cada ponto de contato.</p>
+                    <ul class="space-y-2 mb-8">
+                        <li class="flex items-center font-inter text-gray-600">
+                            <svg class="w-5 h-5 text-azul-mecontai mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Pesquisas personalizáveis
+                        </li>
+                        <li class="flex items-center font-inter text-gray-600">
+                            <svg class="w-5 h-5 text-azul-mecontai mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Análise de sentimento
+                        </li>
+                        <li class="flex items-center font-inter text-gray-600">
+                            <svg class="w-5 h-5 text-azul-mecontai mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Relatórios detalhados
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/message/DKVG55LPQ7N5N1" target="_blank" class="font-inter font-medium text-azul-mecontai hover:underline flex items-center">
+                        Saiba mais
+                        <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="bg-gol-color bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-gol-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-montserrat font-bold text-xl text-azul-escuro mb-3">GOL - Gestão Online</h3>
+                    <p class="font-inter text-gray-600 mb-6">Gerencie todo o ciclo de atendimento com eficiência e acompanhe o desempenho da sua equipe.</p>
+                    <ul class="space-y-2 mb-8">
+                        <li class="flex items-center font-inter text-gray-600">
+                            <svg class="w-5 h-5 text-azul-mecontai mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Gestão de tickets
+                        </li>
+                        <li class="flex items-center font-inter text-gray-600">
+                            <svg class="w-5 h-5 text-azul-mecontai mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Métricas de desempenho
+                        </li>
+                        <li class="flex items-center font-inter text-gray-600">
+                            <svg class="w-5 h-5 text-azul-mecontai mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Automação de processos
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/message/DKVG55LPQ7N5N1" target="_blank" class="font-inter font-medium text-azul-mecontai hover:underline flex items-center">
+                        Saiba mais
+                        <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-xl shadow-md">
+                    <div class="bg-comunica-color bg-opacity-10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-comunica-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-montserrat font-bold text-xl text-azul-escuro mb-3">Comunica</h3>
+                    <p class="font-inter text-gray-600 mb-6">Centralize todas as suas comunicações em um único lugar e nunca perca uma mensagem importante.</p>
+                    <ul class="space-y-2 mb-8">
+                        <li class="flex items-center font-inter text-gray-600">
+                            <svg class="w-5 h-5 text-azul-mecontai mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Integração com WhatsApp
+                        </li>
+                        <li class="flex items-center font-inter text-gray-600">
+                            <svg class="w-5 h-5 text-azul-mecontai mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Chatbot personalizado
+                        </li>
+                        <li class="flex items-center font-inter text-gray-600">
+                            <svg class="w-5 h-5 text-azul-mecontai mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Histórico completo
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/message/DKVG55LPQ7N5N1" target="_blank" class="font-inter font-medium text-azul-mecontai hover:underline flex items-center">
+                        Saiba mais
+                        <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios Section -->
+    <section id="beneficios" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-montserrat font-bold text-3xl md:text-4xl text-azul-escuro mb-4">O que você pode conquistar com a MeContai</h2>
+                <p class="font-inter text-lg text-gray-700 max-w-3xl mx-auto mb-6">Reduza custos, aumente suas vendas, encante seus clientes e bata metas com agilidade e clareza.</p>
+                <p class="font-montserrat font-semibold text-xl text-azul-mecontai italic max-w-3xl mx-auto">Com a MeContai, cada atendimento vira aprendizado — para que o próximo seja ainda melhor.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Benefício 1 -->
+                <div class="benefit-card bg-cinza-claro p-6 rounded-xl">
+                    <div class="benefit-icon bg-cx-color bg-opacity-10">
+                        <svg class="text-cx-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-montserrat font-bold text-xl text-azul-escuro mb-3">🔍 Resolver problemas antes que virem reclamações</h3>
+                    <p class="font-inter text-gray-600">Antecipe falhas com base em dados reais e proteja a experiência do cliente.</p>
+                </div>
+                
+                <!-- Benefício 2 -->
+                <div class="benefit-card bg-cinza-claro p-6 rounded-xl">
+                    <div class="benefit-icon bg-gol-color bg-opacity-10">
+                        <svg class="text-gol-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-montserrat font-bold text-xl text-azul-escuro mb-3">💖 Fidelizar e encantar o cliente</h3>
+                    <p class="font-inter text-gray-600">Crie experiências que geram retorno, recomendação e confiança duradoura.</p>
+                </div>
+                
+                <!-- Benefício 3 -->
+                <div class="benefit-card bg-cinza-claro p-6 rounded-xl">
+                    <div class="benefit-icon bg-azul-mecontai bg-opacity-10">
+                        <svg class="text-azul-mecontai" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-montserrat font-bold text-xl text-azul-escuro mb-3">📈 Tornar o pós-venda estratégico com dados</h3>
+                    <p class="font-inter text-gray-600">Use inteligência para transformar atendimento em crescimento constante.</p>
+                </div>
+
+                <!-- Benefício 4 -->
+                <div class="benefit-card bg-cinza-claro p-6 rounded-xl">
+                    <div class="benefit-icon bg-comunica-color bg-opacity-10">
+                        <svg class="text-comunica-color" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-montserrat font-bold text-xl text-azul-escuro mb-3">🔁 Aprendizado contínuo a cada contato</h3>
+                    <p class="font-inter text-gray-600">Cada resposta, elogio ou crítica se transforma em ação para elevar o padrão do seu atendimento.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="font-montserrat font-semibold text-xl text-azul-escuro max-w-3xl mx-auto">
+                    "Com a MeContai, o atendimento deixa de ser reativo e se transforma no motor mais valioso da sua evolução."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Section -->
+    <section id="depoimentos" class="py-20 bg-mostarda">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <span class="inline-block text-azul-mecontai font-medium mb-2">🎤 DEPOIMENTOS</span>
+                <h2 class="font-montserrat font-bold text-3xl md:text-4xl text-azul-escuro mb-4">Eles já transformaram seu atendimento com a MeContai</h2>
+                <p class="font-inter text-lg text-gray-700 max-w-3xl mx-auto">Resultados reais de quem decidiu ouvir seus clientes e transformar feedback em crescimento.</p>
+            </div>
+            
+            <!-- Testimonials Carousel for Mobile -->
+            <div class="md:hidden carousel">
+                <div class="carousel-inner">
+                    <!-- Testimonial 1 -->
+                    <div class="carousel-item">
+                        <div class="testimonial-card bg-white p-8 shadow-md rounded-xl relative">
+                            <span class="quote-icon">"</span>
+                            <p class="font-inter text-gray-700 italic mb-6 relative z-10">
+                                "Mais organização, agilidade nas respostas e controle de qualidade — com a MeContai, o atendimento deixou de ser manual e passou a gerar resultados visíveis."
+                            </p>
+                            <div class="flex items-center">
+                                <div>
+                                    <p class="font-montserrat font-semibold text-azul-escuro">Rayane</p>
+                                    <p class="font-inter text-sm text-gray-600">Oligoflora</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="carousel-item">
+                        <div class="testimonial-card bg-white p-8 shadow-md rounded-xl relative">
+                            <span class="quote-icon">"</span>
+                            <p class="font-inter text-gray-700 italic mb-6 relative z-10">
+                                "Mais agilidade, menos custos e um relacionamento muito mais próximo com o cliente — a MeContai transforma feedback em ação e eficiência."
+                            </p>
+                            <div class="flex items-center">
+                                <div>
+                                    <p class="font-montserrat font-semibold text-azul-escuro">Cristiano</p>
+                                    <p class="font-inter text-sm text-gray-600">Bella Capri</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="carousel-item">
+                        <div class="testimonial-card bg-white p-8 shadow-md rounded-xl relative">
+                            <span class="quote-icon">"</span>
+                            <p class="font-inter text-gray-700 italic mb-6 relative z-10">
+                                "Antes, os feedbacks só chegavam quando o cliente reclamava. Agora conseguimos identificar e resolver problemas antes que o cliente desista. O impacto foi muito positivo, permitindo converter clientes e alinhar expectativas. A principal vantagem é ter tudo registrado para que a equipe revise o histórico antes do atendimento e encante o cliente."
+                            </p>
+                            <div class="flex items-center">
+                                <div>
+                                    <p class="font-montserrat font-semibold text-azul-escuro">Flávia</p>
+                                    <p class="font-inter text-sm text-gray-600">Oligoflora</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-control carousel-control-prev">
+                    <svg class="w-5 h-5 text-azul-mecontai" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </div>
+                <div class="carousel-control carousel-control-next">
+                    <svg class="w-5 h-5 text-azul-mecontai" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Testimonials Grid for Desktop -->
+            <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-white p-8 shadow-md rounded-xl relative">
+                    <span class="quote-icon">"</span>
+                    <p class="font-inter text-gray-700 italic mb-6 relative z-10">
+                        "Mais organização, agilidade nas respostas e controle de qualidade — com a MeContai, o atendimento deixou de ser manual e passou a gerar resultados visíveis."
+                    </p>
+                    <div class="flex items-center">
+                        <div>
+                            <p class="font-montserrat font-semibold text-azul-escuro">Rayane</p>
+                            <p class="font-inter text-sm text-gray-600">Oligoflora</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-white p-8 shadow-md rounded-xl relative">
+                    <span class="quote-icon">"</span>
+                    <p class="font-inter text-gray-700 italic mb-6 relative z-10">
+                        "Mais agilidade, menos custos e um relacionamento muito mais próximo com o cliente — a MeContai transforma feedback em ação e eficiência."
+                    </p>
+                    <div class="flex items-center">
+                        <div>
+                            <p class="font-montserrat font-semibold text-azul-escuro">Cristiano</p>
+                            <p class="font-inter text-sm text-gray-600">Bella Capri</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 (Flávia com texto reduzido) -->
+                <div class="testimonial-card bg-white p-8 shadow-md rounded-xl relative">
+                    <span class="quote-icon">"</span>
+                    <p class="font-inter text-gray-700 italic mb-6 relative z-10">
+                        "Antes, os feedbacks só chegavam quando o cliente reclamava. Agora conseguimos identificar e resolver problemas antes que o cliente desista. O impacto foi muito positivo, permitindo converter clientes e alinhar expectativas. A principal vantagem é ter tudo registrado para que a equipe revise o histórico antes do atendimento e encante o cliente."
+                    </p>
+                    <div class="flex items-center">
+                        <div>
+                            <p class="font-montserrat font-semibold text-azul-escuro">Flávia</p>
+                            <p class="font-inter text-sm text-gray-600">Oligoflora</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Client Logos Section -->
+            <div class="mt-16">
+                <h3 class="font-montserrat font-semibold text-2xl text-azul-escuro text-center mb-10">Clientes</h3>
+                
+                <!-- Client Logos Carousel -->
+                <div class="bg-white py-10 px-4 rounded-xl shadow-md">
+                    <div class="swiper-container client-logos-swiper">
+                        <div class="swiper-wrapper">
+                            <!-- Logo 1 - Apabor -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Apabor.png" alt="Apabor" title="Apabor">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 2 - BB Onça -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20BB%20On%C3%A7a.png" alt="BB Onça" title="BB Onça">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 3 - Bella Capri -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Bella%20Capri.png" alt="Bella Capri" title="Bella Capri" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x80?text=Bella+Capri';">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 4 - Cocenzo -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Cocenzo.png" alt="Cocenzo" title="Cocenzo">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 5 - Contattos Mais -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Contattos%20mais.png" alt="Contattos Mais" title="Contattos Mais">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 6 - Cristina Lemos -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Cristina%20Lemos%20Certo.png" alt="Cristina Lemos" title="Cristina Lemos">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 7 - Fralda e Cia -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Fralda%20e%20Cia.png" alt="Fralda e Cia" title="Fralda e Cia">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 8 - InvistaNet -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20InvistaNet.png" alt="InvistaNet" title="InvistaNet">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 9 - Murray -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Murray.png" alt="Murray" title="Murray">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 10 - N4Telecom -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20N4Telecom.png" alt="N4 Telecom" title="N4 Telecom">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 11 - Oligoflora -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Oligoflora.png" alt="Oligoflora" title="Oligoflora">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 12 - Oquei -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Oquei.png" alt="Oquei Telecom" title="Oquei Telecom">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 13 - Pedregal -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Pedregal.png" alt="Pedregal" title="Pedregal">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 14 - Polybem -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Polybem.png" alt="Polybem" title="Polybem">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 15 - Rosa Chock -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Rosa%20Chock.png" alt="Rosa Chock" title="Rosa Chock">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 16 - Salão Prime -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Sal%C3%A3o%20Prime.png" alt="Salão Prime" title="Salão Prime">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 17 - Vai Xorá Tintas -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Vai%20Xor%C3%A1%20Tintas.png" alt="Vai Xorá Tintas" title="Vai Xorá Tintas">
+                                </div>
+                            </div>
+                            
+                            <!-- Logo 18 - Zanata -->
+                            <div class="swiper-slide">
+                                <div class="client-logo-slide">
+                                    <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Zanata.png" alt="Zanata" title="Zanata">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Add navigation arrows -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+                
+                <div class="mt-16 text-center">
+                    <p class="font-inter text-lg text-gray-700 mb-6">Quer fazer parte dessa transformação? Fale com a gente e descubra como.</p>
+                    <a href="https://wa.me/message/DKVG55LPQ7N5N1" target="_blank" class="btn-primary text-white font-medium py-3 px-8 rounded-lg inline-block font-inter text-lg">
+                        Quero conhecer a MeContai
+                        <svg class="w-5 h-5 inline-block ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-[#173a52] text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="font-montserrat font-bold text-3xl md:text-4xl mb-6">Pronto para transformar seu pós-venda?</h2>
+            <p class="font-inter text-lg mb-8 max-w-2xl mx-auto">Converse com um de nossos especialistas e descubra como a MeContai pode ajudar sua empresa a aumentar as vendas de forma inteligente.</p>
+            <a href="https://wa.me/message/DKVG55LPQ7N5N1" target="_blank" class="bg-white text-azul-mecontai font-medium py-3 px-8 rounded-lg inline-block font-inter text-lg hover:bg-amarelo transition-colors duration-300">
+                Fale com um especialista
+                <svg class="w-5 h-5 inline-block ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#005c6f] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="footer-logo-container mb-4">
+                        <img src="https://raw.githubusercontent.com/andlb/sitemecontai/main/Home%20(2000%20x%20500%20px).png" alt="MeContai Logo" class="logo-img">
+                    </div>
+                    <p class="font-inter text-sm max-w-xs opacity-80">A MeContai transforma o pós-venda em uma ferramenta de crescimento imediato e contínuo para sua empresa.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="font-montserrat font-semibold text-lg mb-4">Empresa</h3>
+                        <ul class="space-y-2 font-inter">
+                            <li><a href="#" class="opacity-80 hover:opacity-100 transition-opacity">Sobre nós</a></li>
+                            <li><a href="#servicos" class="opacity-80 hover:opacity-100 transition-opacity">Soluções</a></li>
+                            <li><a href="#beneficios" class="opacity-80 hover:opacity-100 transition-opacity">Benefícios</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-montserrat font-semibold text-lg mb-4">Recursos</h3>
+                        <ul class="space-y-2 font-inter">
+                            <li><a href="#" class="opacity-80 hover:opacity-100 transition-opacity">Blog</a></li>
+                            <li><a href="#" class="opacity-80 hover:opacity-100 transition-opacity">Materiais</a></li>
+                            <li><a href="#" class="opacity-80 hover:opacity-100 transition-opacity">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-montserrat font-semibold text-lg mb-4">Contato</h3>
+                        <ul class="space-y-2 font-inter">
+                            <li class="flex items-center opacity-80">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                <a href="mailto:relacionamento@mecontai.com.br" class="hover:opacity-100 transition-opacity">relacionamento@mecontai.com.br</a>
+                            </li>
+                            <li class="flex items-center opacity-80">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                <a href="https://wa.me/message/DKVG55LPQ7N5N1" target="_blank" class="hover:opacity-100 transition-opacity">17 98209-8889</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white border-opacity-20 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="font-inter text-sm opacity-60 mb-4 md:mb-0">© 2023 MeContai. Todos os direitos reservados.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="opacity-60 hover:opacity-100 transition-opacity">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+                        </svg>
+                    </a> 
+                    <a href="#" class="opacity-60 hover:opacity-100 transition-opacity">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="opacity-60 hover:opacity-100 transition-opacity">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            if (carousel) {
+                const carouselInner = carousel.querySelector('.carousel-inner');
+                const carouselItems = carousel.querySelectorAll('.carousel-item');
+                const prevBtn = carousel.querySelector('.carousel-control-prev');
+                const nextBtn = carousel.querySelector('.carousel-control-next');
+                
+                let currentIndex = 0;
+                const itemCount = carouselItems.length;
+                
+                function updateCarousel() {
+                    const translateValue = -currentIndex * 100 + '%';
+                    carouselInner.style.transform = 'translateX(' + translateValue + ')';
+                }
+                
+                prevBtn.addEventListener('click', function() {
+                    currentIndex = (currentIndex - 1 + itemCount) % itemCount;
+                    updateCarousel();
+                });
+                
+                nextBtn.addEventListener('click', function() {
+                    currentIndex = (currentIndex + 1) % itemCount;
+                    updateCarousel();
+                });
+                
+                // Touch events for mobile swipe
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                carousel.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, false);
+                
+                carousel.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, false);
+                
+                function handleSwipe() {
+                    if (touchEndX < touchStartX) {
+                        // Swipe left
+                        nextBtn.click();
+                    } else if (touchEndX > touchStartX) {
+                        // Swipe right
+                        prevBtn.click();
+                    }
+                }
+            }
+            
+            // Initialize Swiper for client logos
+            const clientLogosSwiper = new Swiper('.client-logos-swiper', {
+                slidesPerView: 2,
+                spaceBetween: 20,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                speed: 800,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    // when window width is >= 480px
+                    480: {
+                        slidesPerView: 3,
+                        spaceBetween: 20
+                    },
+                    // when window width is >= 768px
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 30
+                    },
+                    // when window width is >= 1024px
+                    1024: {
+                        slidesPerView: 5,
+                        spaceBetween: 40
+                    }
+                }
+            });
+            
+            // Fix for Bella Capri logo
+            const bellaCapriLogo = document.querySelector('img[alt="Bella Capri"]');
+            if (bellaCapriLogo) {
+                bellaCapriLogo.addEventListener('error', function() {
+                    // Convert GitHub URL to raw URL
+                    const rawUrl = 'https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Bella%20Capri.png';
+                    this.src = rawUrl;
+                });
+                
+                // Force reload to trigger error handler if needed
+                bellaCapriLogo.src = 'https://raw.githubusercontent.com/andlb/sitemecontai/main/Logo%20Bella%20Capri.png';
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'94028b1640d46290',t:'MTc0NzMxMTE0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
